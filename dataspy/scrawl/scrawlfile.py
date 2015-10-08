@@ -1,3 +1,4 @@
+#coding=utf-8
 #月度数据爬取逻辑
 #从中电联网站上抓取每月发布的excel数据文件，将数据文件按照月份存入mysql库
 #查看数据库中已有的最新月份，爬取从最后爬取月到当前月的数据。
@@ -40,7 +41,5 @@ class ScrawlFile:
             a, b = b, a+b
         print()
 
-
-    def secondvalue(e):
-        g = e
-        print(g)
+    def getlink(self):
+	return self.link
