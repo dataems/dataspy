@@ -1,3 +1,6 @@
-from maths import fibo
-import math
-fibo.fib(1000)
+from scrawl import scrawlfile
+#scrawlfile.fib(1000)
+#scrawlfile.ScrawlFile.fib3(1000)
+scrawlfile.ScrawlFile.secondvalue(2)
+
+
