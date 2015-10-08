@@ -42,4 +42,4 @@ class ScrawlFile:
         print()
 
     def getlink(self):
-	return self.link
+        return self.link
