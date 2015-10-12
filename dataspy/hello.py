@@ -7,5 +7,5 @@ url=['http://www.cec.org.cn/guihuayutongji/tongjxinxi/yuedushuju/index.html',
 'http://www.cec.org.cn/guihuayutongji/tongjxinxi/yuedushuju/index_3.html']
 for item in url:
     #x=scrawlfile.ScrawlFile(item,"http://www.cec.org.cn/d/file/","E:\\down\")
-    x=scrawlfile.ScrawlFile(item,"http://www.cec.org.cn/d/file/","/home/lican/Download/")
+    x=scrawlfile.ScrawlFile(item,"http://www.cec.org.cn/d/file/","/home/lican/Downloads/")
     x.geturlfilelinks()

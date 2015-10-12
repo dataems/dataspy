@@ -24,6 +24,7 @@
 import datetime
 import urllib
 import re
+import os
 from bs4 import BeautifulSoup
 
 class ScrawlFile:
@@ -82,8 +83,9 @@ class ScrawlFile:
                 ans = url+href
             #print(ans)
             #print self.getdownloadurl(ans)
-            localfilename = self.localpath + item.text + ".xls"
-            self.downloadfile(self.getdownloadurl(ans),localfilename),
+            localfilename = os.path.join(self.localpath,item.text+".xls")
+            print localfilename 
+            self.downloadfile(self.getdownloadurl(ans),localfilename.encode("gb2312"))
 
 
     def downloadfile(self,x_url,x_localpath):
