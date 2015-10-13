@@ -10,7 +10,9 @@ cur=db.cursor()
 cur.execute('use data_ems')
 cur.execute('select * from geo limit 100')
 
-f=file("e:\\down\\tes.txt",'w')
+#f=file("e:\\down\\tes.txt",'w')
+f=file("/home/lican/Downloads/test.txt","w")
+
 
 for i in cur.fetchall():
     f.write(str(i))
