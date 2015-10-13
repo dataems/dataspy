@@ -84,13 +84,12 @@ class ScrawlFile:
             #print(ans)
             #print self.getdownloadurl(ans)
             localfilename = os.path.join(self.localpath,item.text+".xls")
-            print localfilename 
+            #print localfilename 
             self.downloadfile(self.getdownloadurl(ans),localfilename.encode("gb2312"))
 
 
     def downloadfile(self,x_url,x_localpath):
         #从x_url中找到最终的下载地址
-
         #将文件下载到本地
         urllib.urlretrieve(x_url,x_localpath)
         urllib.urlcleanup() 
