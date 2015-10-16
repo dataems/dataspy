@@ -2,8 +2,12 @@
 import sys
 import MySQLdb
 
+#读取本地的.xls文件，转换成csv格式的数据，时间序列按条存储的格式
+#CSV一条数据格式：带表头，时间（标准英文时间格式）,字段1,字段2,字段3,字段4
+
 reload(sys)
 sys.setdefaultencoding('utf-8')
+
 
 db=MySQLdb.connect(host='localhost', user='lican', passwd='abcd1234',charset='utf8')
 cur=db.cursor()

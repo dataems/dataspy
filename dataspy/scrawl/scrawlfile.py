@@ -17,15 +17,18 @@
 #step1:建立类ScrawlFile(link,postfix,localpath)
 #爬取指定链接link下的所有后缀postfix为数据文件，并保存到本地为localpath下
 
-#step2:建立函数geturlfilelinks(link,postfix)
-#爬取link下所有后缀名为postfix的links,
-#返回包含可下载文件的url的list
+#step2:将下载的xls格式数据，转换成csv格式。
+#时间序列户数据按条横向存储的
+#CSV一条数据格式：带表头，时间（标准英文时间格式）,字段1,字段2,字段3,字段4
+
 
 import datetime
 import urllib
 import re
 import os
+import xlrd
 from bs4 import BeautifulSoup
+
 
 class ScrawlFile:
     '''A Member object represents any other object being a 'member' of a
@@ -93,6 +96,10 @@ class ScrawlFile:
         #将文件下载到本地
         urllib.urlretrieve(x_url,x_localpath)
         urllib.urlcleanup() 
+        print("done")
+
+    def xls2csvfile(self,x_inxlsfilename,x_outcsvfilename):
+        #将给定的xls文件转换成csv文件
         print("done")
 
 
