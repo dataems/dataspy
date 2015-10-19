@@ -1,3 +1,4 @@
+#coding=utf-8
 from scrawl import scrawlfile
 from scrawl import save2mysql
 
@@ -10,7 +11,7 @@ for item in url:
     #x=scrawlfile.ScrawlFile(item,"http://www.cec.org.cn/d/file/","/home/lican/Downloads/")
     x.geturlfilelinks()
 
-#save2mysql.trans_xls_csv("E:\\down\\2011Äê1-4ÔÂÈ«¹úµçÁ¦¹¤ÒµÍ³¼ÆÊı¾İÒ»ÀÀ±í.xls","E:\\down\\2011Äê1-4ÔÂÈ«¹úµçÁ¦¹¤ÒµÍ³¼ÆÊı¾İÒ»ÀÀ±í.csv")
+#save2mysql.trans_xls_csv("E:\\down\\2011å¹´1-4æœˆå…¨å›½ç”µåŠ›å·¥ä¸šç»Ÿè®¡æ•°æ®ä¸€è§ˆè¡¨.xls","E:\\down\\2011å¹´1-4æœˆå…¨å›½ç”µåŠ›å·¥ä¸šç»Ÿè®¡æ•°æ®ä¸€è§ˆè¡¨.csv")
 
 
 
