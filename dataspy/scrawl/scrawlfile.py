@@ -28,6 +28,7 @@ import re
 import os
 import xlrd
 from bs4 import BeautifulSoup
+from scrawl import save2mysql
 
 
 class ScrawlFile:
@@ -77,7 +78,7 @@ class ScrawlFile:
         pat2 = re.compile(r'http')
 
         for item in content:
-            print item.text
+            #print item.text
             h = pat.search(str(item))
             href = h.group(1)
             if pat2.search(href):
@@ -87,33 +88,25 @@ class ScrawlFile:
             #print(ans)
             #print self.getdownloadurl(ans)
             localfilename = os.path.join(self.localpath,item.text+".xls")
+            localcsv = os.path.join(self.localpath,item.text+".csv")
             #print localfilename 
-            self.downloadfile(self.getdownloadurl(ans),localfilename.encode("gb2312"))
-
+            self.downloadfile(self.getdownloadurl(ans),localfilename.encode("gbk"))
+            save2mysql.trans_xls_csv(localfilename,localcsv)
 
     def downloadfile(self,x_url,x_localpath):
         #从x_url中找到最终的下载地址
         #将文件下载到本地
         urllib.urlretrieve(x_url,x_localpath)
         urllib.urlcleanup() 
-        print("done")
-
-    def xls2csvfile(self,x_inxlsfilename,x_outcsvfilename):
-        #将给定的xls文件转换成csv文件
-        print("done")
+        #print("done")
 
 
     def getdownloadurl(self,x_url):
-        '''
-        从x_url参数对应的网页中找到具体的xls下载文件地址
-        * xurl - 网页
-        *  
-        * 返回值 下载文件url地址,如果没有找到返回None     
-        '''
-        html = urllib.urlopen(x_url).read().decode("gb2312")
+        html = urllib.urlopen(x_url).read().decode("gbk")
         #调用BeautifulSoup
         soup = BeautifulSoup(html,"lxml")
-        content = soup.findAll('a', attrs={"title":re.compile("[\u4e00-\u9fa5]")})  #中文正则 [\u4e00-\u9fa5]
+        #content = soup.findAll('a', attrs={"title":re.compile("[\u4e00-\u9fa5]")})  #中文正则 [\u4e00-\u9fa5]
+        content = soup.findAll('a', attrs={"href":re.compile("xls")})  #含有xls
         if len(content):
             return self.geturlfromtaga(str(content[0]))
         else:
@@ -133,6 +126,7 @@ class ScrawlFile:
                 ans = href
             else:
                 ans = re.sub(pat3,self.prefix,href)
+            #print ans
             return ans
         else:
             print "error in geturlfromtaga"
