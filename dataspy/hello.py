@@ -1,4 +1,4 @@
-#coding=utf-8
+#coding=utf8
 from scrawl import scrawlfile
 from scrawl import save2mysql
 
